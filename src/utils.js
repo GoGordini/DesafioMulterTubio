@@ -15,7 +15,9 @@ export const __mainDirname = path.join(__dirname, '..'); ////asdasd/asdasdasd/as
 //configuración de Multer
 const storage = multer.diskStorage({
     destination: (req,file,cb)=>{
-        cb(null,`${__dirname}/public/documents`) //primer parámetro de callback es que no existe error, segundo el path absoluto)
+        const folderName=((req.params.folderName=="products")||(req.params.folderName=="profiles"))?(req.params.folderName):("documents")
+        const dir = `${__dirname}/public/${folderName}`;
+        cb(null,dir) //primer parámetro de callback es que no existe error, segundo el path absoluto)
     },
     filename: (req,file,cb)=>{
         cb(null,`${Date.now()}-${file.originalname}`)

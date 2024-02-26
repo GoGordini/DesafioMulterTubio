@@ -29,7 +29,7 @@ export const updatePremiumStatus= async (req, res) => {
 
 export const uploadDocuments = async (req,res) =>{
     try{
-        const {uid} =req.params;
+        const {uid,folderName} =req.params;
         const user = await getUserByIdService(uid);
         if (!user){
             return res.status(404).send({status:"error",message:"User not found"})

@@ -50,7 +50,7 @@ router.get('/logout', (req, res) => {
 
 router.put('/premium/:uid', updatePremiumStatus);
 
-router.post('/:uid/documents',uploader.array("userDocs",3), uploadDocuments);
+router.post('/:uid/documents/:folderName',uploader.array("userDocs",3), uploadDocuments);
 
 router.post("/restore",async(req,res)=>{
     try{
